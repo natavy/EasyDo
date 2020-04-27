@@ -1,0 +1,50 @@
+﻿@model ContactViewModel
+
+@if (ViewBag.Success != null)
+{
+    <partial name="~/Views/Shared/_SuccessPage.cshtml" />
+    <script>
+        $(function () {
+            $("#deleteForm").hide();
+        })
+    </script>
+}
+@if (ViewBag.Failed != null)
+{
+    <div class="alert alert-danger" role="alert" id="failedMessageAddPost">
+        @ViewBag.Failed
+    </div>
+}
+
+<div class="row" id="deleteForm">
+    <div class="col-md-6 text-center m-auto text-danger">
+        <h5> Are you sure want to delete this item?</h5>
+        <hr />
+        <i class="fas fa-arrow-right loginImage"></i>
+        <button class="btn d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-arrow-down loginImage"></i>
+        </button>
+    </div>
+    <div class="col-md-4 col-md-offset-2 m-auto">
+        @*<hr />*@
+        <form class="form formFont" id="account" method="post">
+            <div class="form-group">
+                <label asp-for="Id"></label>
+                <input asp-for="Id" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+                @Html.SubmitDelete("Delete")
+                @Html.Back("Back")
+            </div>
+        </form>
+    </div>
+</div>

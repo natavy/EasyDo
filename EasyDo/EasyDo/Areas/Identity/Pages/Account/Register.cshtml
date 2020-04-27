@@ -1,0 +1,39 @@
+﻿@page
+@model RegisterModel
+
+<div class="row">
+    <div class="col-md-6 text-center m-auto firstPage">
+        <h5>Welcome to EasyDo!</h5>
+        <hr />
+        <span> To use this application, you must create a user account.</span>
+        <br />
+        <span>Already have an account? <a href="/Identity/Account/Login" class="text-success">LOG IN</a></span>
+    </div>
+    <div class="col-md-4 col-md-offset-2 m-auto firstPage">
+        <form class="form" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h5 class="text-center">Create a new account.</h5>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="genric-btn primary circle arrow">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

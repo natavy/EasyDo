@@ -1,0 +1,95 @@
+﻿@inject SignInManager<IdentityUser> signInManager
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EasyDo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="~/css/successPage.css" />
+    <link rel="stylesheet" href="~/css/eventCalendar.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous" asp-append-version="true">
+    <link href='~/lib/fullcalendar/core/main.css' rel='stylesheet' asp-append-version="true" />
+    <link href='~/lib/fullcalendar/daygrid/main.css' rel='stylesheet' asp-append-version="true"/>
+    <link href='~/lib/fullcalendar/timegrid/main.css' rel='stylesheet' asp-append-version="true"/>
+    <link href='~/lib/fullcalendar/bootstrap/main.css' rel='stylesheet' asp-append-version="true"/>
+    <link href='~/lib/bootstrap-datepicker/css/bootstrap-datepicker.css' rel='stylesheet' asp-append-version="true"/>
+
+</head>
+<body>
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <div class="sidebar-header borderMenu text-center text-white">
+                    <span>Menu</span>
+                </div>
+                <li><a href="/Home/HomePage">Home</a></li>
+                <li><a href="/Contacts/All">Contacts</a></li>
+                <li><a href="/Events/Index">Events</a></li>
+                <li><a href="#">ToDoList</a></li>
+                <li><a href="#">Mail-Box</a></li>
+                <li><a href="#">Chat</a></li>
+                <li><a href="#">About</a></li>
+                @*<li class="dropdown">
+                        <a href="#works" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                        <ul class="dropdown-menu animated fadeInLeft" role="menu">
+                            <li><a href="#pictures">Pictures</a></li>
+                            <li><a href="#videos">Videeos</a></li>
+                            <li><a href="#books">Books</a></li>
+                            <li><a href="#art">Art</a></li>
+                            <li><a href="#awards">Awards</a></li>
+                        </ul>
+                    </li>*@
+            </ul>
+        </nav>
+
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+
+        <div id="content">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <button type="button" data-toggle="offcanvas" class="hamburger animated fadeInLeft is-closed position-relative">
+                        <span class="hamb-top"></span>
+                        <span class="hamb-middle"></span>
+                        <span class="hamb-bottom"></span>
+                    </button>
+                    <div class="navbar-brand ml-3">
+                        <span class="font-weight-bold">Easy<span class="logoColor font-weight-bold">Do</span></span>
+                    </div>
+                    <button class="btn btnLogin d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/js/calendar.js" asp-append-version="true"></script>
+    <script src='~/lib/fullcalendar/core/main.js' asp-append-version="true"></script>
+    <script src='~/lib/fullcalendar/daygrid/main.js' asp-append-version="true"></script>
+    <script src='~/lib/fullcalendar/timegrid/main.js' asp-append-version="true"></script>
+    <script src='~/lib/fullcalendar/moment/main.js' asp-append-version="true"></script>
+    <script src='~/lib/fullcalendar/interaction/main.js' asp-append-version="true"></script>
+    <script src='~/lib/fullcalendar/bootstrap/main.js' asp-append-version="true"></script>
+    <script src='~/lib/fullcalendar/google-calendar/main.js' asp-append-version="true"></script>
+    <script src='~/lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js' asp-append-version="true"></script>
+
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

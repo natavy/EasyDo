@@ -1,0 +1,48 @@
+﻿@model ContactPageViewModel
+@{
+    ViewData["Title"] = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div>
+    @using (Html.BeginForm("All", "Contacts"))
+    {
+        <div class="float-left">
+            @Html.TextBoxFor(m => m.Search, new { @class = "form-control shadow-none", placeholder = "Search" })
+        </div>
+    }
+    <div><a class="btn genric-btn info arrow borderBtn float-right shadow-none" asp-action="Create">Add  <i class="fas fa-plus-circle"></i></a></div>
+</div>
+
+<partial name="_ListContactPartial" for="Contacts" />
+
+<nav>
+    <ul class="pagination pagination-centered pagination-sm justify-content-center">
+        @for (var i = 1; i <= Model.TotalPages; i++)
+        {
+
+            if (i == Model.CurrentPage)
+            {
+                <li class="page-item active"><span class="page-link active pagingColor" href="#">@i<span class="sr-only">@i</span></span></li>
+            }
+            else
+            {
+
+                <li class="page-item "><a class="page-link" href="@Url.Action("All", "Contacts",new { page = i, Model.Search }, null)"><span>@i.ToString()</span></a></li>
+
+            }
+            if (Model.CurrentPage > Model.TotalPages)
+            {
+                Model.CurrentPage = 1;
+            }
+
+        }
+        <li class="page-item"><a class="page-link" href="@Url.Action("All", "Contacts", new {page = (Model.CurrentPage + 1), Model.Search })"><span>Next</span></a></li>
+        <li class="page-item"><a class="page-link" tabindex="-1" href="@Url.Action("All", "Contacts", new { page = (Model.CurrentPage - 1), Model.Search })"><span>Previous</span></a></li>
+    </ul>
+</nav>
+
+
+
+
+

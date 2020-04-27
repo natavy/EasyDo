@@ -1,0 +1,77 @@
+﻿@model ContactViewModel
+
+@if (ViewBag.Success != null)
+{
+    <div id="s"><partial name="~/Views/Shared/_SuccessPage.cshtml" /></div>
+    <script>
+        $(function () {
+            $("#formCreate").hide();
+        })
+    </script>
+
+}
+@if (ViewBag.Failed != null)
+{
+    <p class="alert" id="failedMessageAddPost">@ViewBag.Failed</p>
+}
+<div id="formCreate">
+    <div class="col-md-12 text-center">
+        <h5 class="colorH">Create new contact</h5>
+    </div>
+    <form class="mt-5" method="post">
+        <div class="form-group row">
+            <label asp-for="FirstName" class="col-sm-2 col-form-label text-right">FirstName</label>
+            <div class="col-sm-4">
+                <input asp-for="FirstName" type="text" class="form-control mr-5">
+            </div>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+            <label asp-for="LastName" class="col-sm-2 col-form-label text-right ">LastName</label>
+            <div class="col-sm-4">
+                <input asp-for="LastName" type="text" class="form-control">
+            </div>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="City" class="col-sm-2 col-form-label text-right">City</label>
+            <div class="col-sm-4">
+                <input asp-for="City" type="text" class="form-control mr-5">
+            </div>
+            <span asp-validation-for="City" class="text-danger"></span>
+            <label asp-for="Email" class="col-sm-2 col-form-label text-right ">Email</label>
+            <div class="col-sm-4">
+                <input asp-for="Email" class="form-control">
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="PhoneNumber" class="col-sm-2 col-form-label text-right">PhoneNumber</label>
+            <div class="col-sm-4">
+                <input asp-for="PhoneNumber" class="form-control mr-5" />
+            </div>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            <label asp-for="Birthday" class="col-sm-2 col-form-label text-right ">Birthday</label>
+            <div class="col-sm-4">
+                <input type="date" asp-for="Birthday" class="form-control">
+            </div>
+            <span asp-validation-for="Birthday" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Profession" class="col-sm-2 col-form-label text-right">Profession</label>
+            <div class="col-sm-4">
+                <input asp-for="Profession" class="form-control mr-5">
+            </div>
+            <span asp-validation-for="Profession" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Description" class="col-sm-2 col-form-label text-right ">Description</label>
+            <div class="col-sm-4">
+                <textarea asp-for="Description" type="date" class="form-control"></textarea>
+            </div>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group bntPosition">
+            @Html.SubmitSave("Save")
+            @Html.Back("Back")
+        </div>
+    </form>
+</div>

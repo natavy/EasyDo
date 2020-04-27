@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "fullcalendar@4.2.0",
+      "destination": "wwwroot/lib/fullcalendar/"
+    },
+    {
+      "library": "bootstrap-datepicker@1.9.0",
+      "destination": "wwwroot/lib/bootstrap-datepicker/"
+    },
+    {
+      "library": "moment.js@2.24.0",
+      "destination": "wwwroot/lib/moment.js/"
+    },
+    {
+      "library": "bootstrap-modal@2.2.6",
+      "destination": "wwwroot/lib/bootstrap-modal/"
+    }
+  ]
+}

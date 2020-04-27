@@ -1,0 +1,53 @@
+﻿@model ContactViewModel
+    <div class="container userDiv">
+        <div class="row">
+            <div class="col-lg-6 col-sm-8 col-12 main-section text-center">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+                </div>
+                <div class="row user-detail">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <img src="https://www.nicesnippets.com/demo/man01.png" class="rounded-circle img-thumbnail">
+                        <h5 class="firstPage">@Model.FirstName @Model.LastName</h5>
+                        <p><i class="fa fa-map-marker firstPage" aria-hidden="true"></i> @Model.City</p>
+                        <hr>
+                        @Html.ActionLink("Message","SendEmail","Email", new { id = Model.Id }, new { @class = "genric-btn btnMessage btn-sm shadow-none" })
+                        <hr>
+                        <span>@Model.Description</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-8 col-12 main-section text-center">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+                </div>
+                <div class="col-lg-12 col-sm-12 col-12">
+                    <div class="form-group row mt-4">
+                        <label asp-for="Email" class="col-sm-5 col-form-label text-right">Email</label>
+                        <div class="col-sm-6">
+                            <input asp-for="Email" type="text" class="form-control mr-5" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="PhoneNumber" class="col-sm-5 col-form-label text-right">PhoneNumber</label>
+                        <div class="col-sm-6">
+                            <input asp-for="PhoneNumber" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Birthday" class="col-sm-5 col-form-label text-right">Birthday</label>
+                        <div class="col-sm-6">
+                            <input asp-for="Birthday" type="text" class="form-control mr-5" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Profession" class="col-sm-5 col-form-label text-right ">Profession</label>
+                        <div class="col-sm-6">
+                            <input asp-for="Profession" type="text" class="form-control mr-5" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btnMargin">@Html.Back("Back")</div>
+    </div>

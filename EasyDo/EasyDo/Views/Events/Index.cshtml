@@ -1,0 +1,192 @@
+﻿@model EventViewModel
+
+
+<div id='calendar'></div>
+@*<div id="myModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <button id="btnDelete" class="btn btn-default btn-sm pull-right">
+                        <span class="glyphicon glyphicon-remove"></span> Remove
+                    </button>
+                    <button id="btnEdit" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                    <input type="text" id='myDesc' class="form-control" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 id="modalTitle" class="modal-title text-black-50">Title</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-1">
+                    <label data-error="wrong" data-success="right" for="form34">Start</label>
+                    <input type="text" id='myTime' class="form-control" readonly>
+                </div>
+                <div class="md-form mb-1">
+                    <label data-error="wrong" data-success="right" for="form34">End</label>
+                    <input type="text" id='myTime1' class="form-control" readonly>
+                </div>
+                <div class="md-form mb-1">
+                    <label data-error="wrong" data-success="right" for="form29">Description</label>
+                    <input type="text" id='myDesc' class="form-control" readonly>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-success">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal modal-top fade calendar-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form id="add-event">
+                <div class="modal-body">
+                    <h4>Add Event Detail</h4>
+                    <div class="form-group">
+                        <label>Event name</label>
+                        <input type="text" class="form-control" name="ename">
+                    </div>
+                    <div class="form-group">
+                        <label>Event Date</label>
+                        <input type='date' class="datetimepicker form-control" name="edate">
+                    </div>
+                    <div class="form-group">
+                        <label>Event Description</label>
+                        <textarea class="form-control" name="edesc"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Color</label>
+                        <select class="form-control" name="ecolor">
+                            <option value="fc-bg-default">fc-bg-default</option>
+                            <option value="fc-bg-blue">fc-bg-blue</option>
+                            <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
+                            <option value="fc-bg-pinkred">fc-bg-pinkred</option>
+                            <option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: ['dayGrid', 'moment', 'bootstrap', 'interaction', 'timeGrid'],
+            timeZone: 'UTC',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            themeSystem: 'bootstrap',
+            editable: true,
+            selectable: true,
+            droppable: true,
+            nowIndicator: true,
+            navLinks: true,
+            eventLimit: true,
+            events: function (fetchInfo, successCallback, failureCallback) {
+                $.ajax({
+                    type: 'get',
+                    url: '/Events/GetEvents',
+                    success: function (events) {
+                        successCallback(events);
+                    },
+                    failure: function () {
+                        alert('there was an error while fetching events!');
+                    },
+                });
+            },
+            eventTimeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                meridiem: false
+            },
+            eventClick: function (info) {
+                var title = info.event.title;
+                var start = info.event.start;
+                var end = info.event.end;
+                var desc = info.event.extendedProps.description;
+                var formatStart = calendar.formatDate(start, {
+                    month: 'long',
+                    year: 'numeric',
+                    day: 'numeric',
+                    hour:'2-digit',
+                    minute:'2-digit',
+                });
+                var formatEnd = calendar.formatDate(end, {
+                    month: 'long',
+                    year: 'numeric',
+                    day: 'numeric',
+                    hour:'2-digit',
+                    minute:'2-digit',
+                });
+                
+                $('#modalTitle').text(title);
+                $('#myDesc').val(desc);
+                $('#myTime').val(formatStart);
+                $('#myTime1').val(formatEnd);
+                $('#myModal1').modal('show');
+            },
+
+            droppable: true, // this allows things to be dropped onto the calendar
+            drop: function (arg) {
+                // is the "remove after drop" checkbox checked?
+                if (document.getElementById('drop-remove').checked) {
+                    // if so, remove the element from the "Draggable Events" list
+                    arg.draggedEl.parentNode.removeChild(arg.draggedEl);
+                }
+            },
+            selectMirror: true,
+            dateClick: function () {
+
+                $('#myModal').modal('show');
+                calendar.unselect()
+            }
+            //select: function (arg) {
+
+            //    $('#myModal').modal('show');
+            //    calendar.unselect()
+            //},
+
+        });
+
+        calendar.render();
+    });
+
+
+</script>
+

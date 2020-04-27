@@ -1,0 +1,221 @@
+
+
+.button-group-area .genric-btn {
+    margin-right: 10px;
+    margin-top: 10px
+}
+
+    .button-group-area .genric-btn:last-child {
+        margin-right: 0
+    }
+
+.genric-btn {
+    display: inline-block;
+    outline: none;
+    margin: 1px 3px;
+    line-height: 2.2rem;
+    padding: 0 30px;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    font-weight: 400;
+    width: 120px;
+    cursor: pointer;
+    /*-webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;*/
+    /*transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out ease-in-out;*/
+    /*outline: none;*/
+}
+    .genric-btn.radius {
+        border-radius: 0.25rem;
+        /*outline: none;*/
+    }
+
+    .genric-btn.circle {
+        border-radius: 0.25rem;
+        outline: none;
+    }
+
+
+.genric-btn.primary {
+    color: white;
+    background: #6cbb23;
+    border: 1px solid transparent
+}
+
+    .genric-btn.primary:hover {
+        color: black;
+        border: 1px solid #6cbb23;
+        background: #6cbb23
+    }
+
+.genric-btn.primary-border {
+    color: #6cbb23;
+    border: 1px solid #6cbb23;
+    background: #fff
+}
+
+    .genric-btn.primary-border:hover {
+        color: #fff;
+        background: #1D4CAF;
+        border: 1px solid transparent
+    }
+
+    .genric-btn.success {
+        color: #fff;
+        background: #626895;
+        border: 1px solid transparent
+    }
+
+        .genric-btn.success:hover {
+            color: black;
+            border: 1px solid #1D4CAF;
+            background: #626895
+        }
+
+.genric-btn.success-border {
+    color: #4cd3e3;
+    border: 1px solid #4cd3e3;
+    background: #fff
+}
+
+    .genric-btn.success-border:hover {
+        color: #fff;
+        background: #4cd3e3;
+        border: 1px solid transparent
+    }
+
+    .genric-btn.info {
+        color: #fff;
+        background: #626895;
+        border: 1px solid transparent;
+        font-size: 15px;
+        width: auto;
+    }
+.searchButton{
+    color: #fff!important;
+    background: #6cbb23!important;
+    height:35px!important;
+    border:none!important;
+}
+.colorSetting td a{
+    color:#1D4CAF!important;
+}
+
+.genric-btn.info:hover {
+    color: #38a4ff;
+    border: 1px solid #38a4ff;
+    background: #626895
+}
+.genric-btn.info-border {
+    color: #38a4ff;
+    border: 1px solid #38a4ff;
+    background: #fff
+}
+
+    .genric-btn.info-border:hover {
+        color: #fff;
+        background: #6a7282;
+        border: 1px solid transparent
+    }
+
+    .genric-btn.warning {
+        color: #fff;
+        background: #f4e700;
+        border: 1px solid transparent
+    }
+
+        .genric-btn.warning:hover {
+            color: #f4e700;
+            border: 1px solid #f4e700;
+            background: #fff
+        }
+
+    .genric-btn.warning-border {
+        color: #f4e700;
+        border: 1px solid #f4e700;
+        background: #fff
+    }
+
+        .genric-btn.warning-border:hover {
+            color: #fff;
+            background: #f4e700;
+            border: 1px solid transparent
+        }
+
+.genric-btn.danger {
+    color: #fff;
+    background: #DC3545;
+    border: 1px solid transparent
+}
+
+        .genric-btn.danger:hover {
+            color: black;
+            border: 1px solid #f44a40;
+            background: #DC3545
+        }
+
+.genric-btn.danger-border {
+    color: #DC3545;
+    background: #fff
+}
+
+    .genric-btn.danger-border:hover {
+        color: #fff;
+        background: #DC3545;
+        border: 1px solid transparent
+    }
+
+.secondDiv{
+    margin-top:10rem;
+    margin-left:13rem;
+}
+.divIndex {
+    float:left
+}
+
+
+@media (max-width: 767px) {
+    .story-content h1 {
+        font-size: 40px
+    }
+}
+
+@media (max-width: 991px) {
+    .story-content h1 br {
+        display: none
+    }
+}
+
+.story-content h6 {
+    font-weight: 400
+}
+
+.story-content p {
+    margin-bottom: 60px;
+    font-size: 16px
+}
+
+@media (max-width: 991px) {
+    .story-content p br {
+        display: none
+    }
+}
+
+.story-content .sp-1 {
+    font-weight: 600
+}
+
+.story-content .sp-2 {
+    color: #6cbb23;
+    font-weight: 600
+}
+
+@media (max-width: 768px) {
+    .story-content {
+        text-align: center
+    }
+}
+
